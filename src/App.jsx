@@ -1,33 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import Register from './pages/Register'
+import { Route,Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import InstructorDashboard from './pages/InstructorDashboard'
+import StudentDashboard from './pages/StudentDashboard'
+import { ToastContainer } from 'react-toastify'
+import CreateCourse from './pages/CreateCourse'
+import CourseList from './pages/CourseList'
+import CourseDetail from './pages/CourseDetail'
+import AllCourses from './pages/AllCourses'
+import MyEnrollCourses from './pages/MyEnrollCourses'
+import CourseSessions from './pages/CourseSession'
+import StudentProfile from './pages/StudentProfile'
+import MyCourses from './pages/Instructorcourse'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <Routes>
+     <Route path='/' element={<Home/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/login' element={<Login/>}/>
+      
+      <Route path='/student-dashboard' element={<StudentDashboard/>}>
+      <Route index element={<MyEnrollCourses />} />
+        <Route path='all-course' element={<AllCourses/>}/>
+        {/* <Route path='my-enrollcourses' element={<MyEnrollCourses/>}/> */}
+        <Route path='course/:courseId' element={<CourseSessions/>} />
+        <Route path='profile' element={<StudentProfile/>} />
+      </Route>
+
+      <Route path='/instructor-dashboard' element={<InstructorDashboard/>}>
+      <Route path='create-course' element={<CreateCourse/>}/>
+      <Route path='instructor-course' element={<MyCourses/>}/>
+
+
+      <Route path='course-list' element={<CourseList/>}/>
+      <Route path='course/:id' element={<CourseDetail/>}/>
+      </Route>
+     </Routes>
+    
+     <ToastContainer position="top-right" autoClose={3000} />
     </>
   )
 }
