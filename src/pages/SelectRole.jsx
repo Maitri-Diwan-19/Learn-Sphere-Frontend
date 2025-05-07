@@ -5,9 +5,9 @@ const SelectRole = () => {
   const navigate = useNavigate();
 
   const handleRoleSelect = (role) => {
-    // Optionally store role in localStorage or send to backend
+   
     console.log("Selected Role:", role);
-    navigate(`/${role.toLowerCase()}`); // navigate to /student or /instructor
+    navigate(`/${role.toLowerCase()}`); 
   };
 
   return (

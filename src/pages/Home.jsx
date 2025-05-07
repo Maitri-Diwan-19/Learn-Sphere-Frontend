@@ -7,7 +7,6 @@ const Home = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav className="bg-zinc-800 text-white p-4 shadow-md">
         <div className="flex justify-between items-center max-w-6xl mx-auto">
           <Link to="/" className="text-2xl font-bold">Learn Sphere</Link>
@@ -20,8 +19,6 @@ const Home = () => {
           </div>
         </div>
       </nav>
-
-      
       <section className="bg-zinc-100 py-20 text-center">
         <h1 className="text-4xl font-bold text-zinc-800 mb-4">Empower Your Teaching & Learning Journey</h1>
         <p className="text-lg text-zinc-600 mb-8 max-w-xl mx-auto">
@@ -31,8 +28,6 @@ const Home = () => {
           Create an Account
         </Link>
       </section>
-
-  
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
           <div className="shadow-lg p-6 rounded bg-zinc-100">
@@ -50,7 +45,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+
       <section className="bg-zinc-800 text-white py-16 text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Share or Learn?</h2>
         <p className="mb-6 text-lg">Sign up today and join the Learn Sphere community.</p>

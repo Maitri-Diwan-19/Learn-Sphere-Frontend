@@ -17,7 +17,7 @@ export default function MyEditor({ content, setContent }) {
 
   return (
     <div className="p-4 bg-white rounded-md shadow-md">
-      {/* Editor Buttons */}
+     
       <div className="flex flex-wrap gap-2 mb-4">
         <button
           type="button"

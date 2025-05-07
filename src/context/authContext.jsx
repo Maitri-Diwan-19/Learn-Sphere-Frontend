@@ -7,14 +7,14 @@ import axiosInstance from "../api/courseapi";
 export const AuthProvider = ({children})=>{
   const [user,setUser]= useState(null);
 
-    useEffect(() => {
-      const validateUser = async () => {
-        try {
-        
-          const res = await axiosInstance.get("/auth/me");
-          setUser(res.data.user);
-          console.log("User from access token:", res.data.user);
-        } catch (err) {
+  useEffect(() => {
+    const validateUser = async () => {
+      try {
+        let res = await axiosInstance.get("/auth/me");
+        setUser(res.data.user);
+      } catch (err) {
+        // Attempt refresh only if the original request failed with 401
+        if (err.response?.status === 401) {
           try {
             await axiosInstance.post("/auth/refreshtoken");
             const userRes = await axiosInstance.get("/auth/me");
@@ -24,18 +24,22 @@ export const AuthProvider = ({children})=>{
             setUser(null);
             console.error("Refresh token failed:", refreshErr);
           }
+        } else {
+          setUser(null);
+          console.error("User validation failed:", err);
         }
-      };
-
-      validateUser();
-    }, []);
+      }
+    };
+  
+    validateUser();
+  }, []);
+  
   
     const registerUser = async (email, password, role, name) => {
         try {
           await axios.post('http://localhost:2000/api/auth/register', { email, password, role, name },
             { withCredentials: true }
           );
-        
           toast.success('Registered successfully');
         } catch (err) {
           const message = err.response?.data?.message || "Registration failed. Please try again.";
@@ -51,9 +55,8 @@ export const AuthProvider = ({children})=>{
             { email, password },
             { withCredentials: true } 
           );
-      
           const { user } = res.data;
-          localStorage.setItem("user", JSON.stringify(user));
+
           setUser(user);
           toast.success("Login successful!");
           return user;
@@ -66,8 +69,6 @@ export const AuthProvider = ({children})=>{
       const logoutUser = async () => {
         try {
           await axiosInstance.post("/auth/logout"); 
-      
-          localStorage.removeItem("user"); 
           setUser(null);
           toast.info("Logged out successfully.");
         } catch (err) {

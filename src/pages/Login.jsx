@@ -1,4 +1,3 @@
-// Login.jsx
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {register, handleSubmit,formState: { errors },} = useForm();
 
   const onSubmit = async (data) => {
     try {

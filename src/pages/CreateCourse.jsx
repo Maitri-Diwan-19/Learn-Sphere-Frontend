@@ -12,14 +12,7 @@ const CourseForm = () => {
   const { course: existingCourse, id: courseId } = location.state || {};
   const { handleCreateCourse, handleUpdateCourse } = useContext(CourseContext);
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    reset,
-    watch,
-    formState: { errors },
-  } = useForm({
+  const {register, control, handleSubmit, reset,watch,  formState: { errors },} = useForm({
     defaultValues: {
       title: "",
       description: "",

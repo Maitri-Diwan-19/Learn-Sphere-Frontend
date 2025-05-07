@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../api/courseapi';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  Legend
+import { BarChart, Bar,XAxis,YAxis,Tooltip,CartesianGrid, ResponsiveContainer,PieChart,
+  Pie,Cell,
+Legend
 } from 'recharts';
 
 const MyCourses = () => {
@@ -21,7 +12,7 @@ const MyCourses = () => {
   const [loadingCompletion, setLoadingCompletion] = useState(true);
   const [error, setError] = useState(null);
 
-  // Softer pastel tones for pie chart
+  // colors for pie chart
   const COLORS = ['#6366F1', '#F59E0B', '#10B981', '#EF4444', '#3B82F6', '#8B5CF6', '#EC4899'];
 
   // Fetch instructor courses

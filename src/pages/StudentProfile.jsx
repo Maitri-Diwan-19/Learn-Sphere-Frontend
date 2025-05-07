@@ -89,5 +89,4 @@ const StudentProfile = () => {
     </div>
   );
 };
-
 export default StudentProfile;

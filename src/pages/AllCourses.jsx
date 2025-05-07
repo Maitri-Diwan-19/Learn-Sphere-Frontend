@@ -8,18 +8,8 @@ const AllCourses = () => {
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  // Predefined categories
-  const predefinedCategories = [
-    "Web Development",
-    "Data Science",
-    "Machine Learning",
-    "Artificial Intelligence",
-    "Programming",
-    "Design",
-    "Marketing",
-    "Finance",
-    "Other"
-  ];
+  const predefinedCategories = [ "Web Development","Data Science", "Machine Learning","Artificial Intelligence",
+     "Programming","Design","Marketing","Finance","Other"];
 
   useEffect(() => {
     axiosInstance
@@ -44,7 +34,7 @@ const AllCourses = () => {
     }
   };
 
-  // Merge and deduplicate categories
+  // Merge and duplicate categories
   const uniqueBackendCategories = [...new Set(courses.map(course => course.category).filter(Boolean))];
   const allCategories = ['All', ...new Set([...predefinedCategories, ...uniqueBackendCategories])];
 
@@ -60,7 +50,7 @@ const AllCourses = () => {
     <div className="p-6 bg-zinc-50 min-h-screen">
       <h2 className="text-3xl font-semibold text-zinc-800 mb-6 text-center">All Courses</h2>
 
-      {/* Filter Dropdown */}
+    
       <div className="mb-6 flex justify-center">
         <label htmlFor="category" className="mr-3 font-medium text-zinc-700">Filter by Category:</label>
         <select
@@ -77,7 +67,6 @@ const AllCourses = () => {
         </select>
       </div>
 
-      {/* Course List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredCourses.map((course) => (
           <div key={course.id} className="bg-white border border-zinc-200 rounded-xl shadow-md hover:shadow-lg transition-transform transform hover:scale-105">

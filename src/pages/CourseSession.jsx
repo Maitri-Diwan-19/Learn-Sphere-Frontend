@@ -82,7 +82,7 @@ const CourseSessions = () => {
   };
 
   const onSubmitReview = async (data) => {
-    // e.preventDefault();
+  
     try {
       await axiosInstance.post(`/course/${courseId}/reviews`, {
         rating,

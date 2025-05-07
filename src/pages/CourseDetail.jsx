@@ -4,6 +4,9 @@ import { toast } from "react-toastify";
 import { CourseContext } from "../context/courseContext";
 import axiosInstance from "../api/courseapi";
 import ReactPlayer from "react-player";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
+
 const CourseDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,15 +36,14 @@ const CourseDetail = () => {
 
     try {
       await handleDeleteCourse(id);
-      navigate("/instructor-dashboard/course-list"); 
+      navigate("/instructor-dashboard/course-list");
     } catch (error) {
-    
       toast.error("Failed to delete course");
     }
   };
 
   const handleUpdate = () => {
-    if (!course) return; 
+    if (!course) return;
 
     navigate("/instructor-dashboard/create-course", { state: { id, course } });
   };
@@ -68,7 +70,9 @@ const CourseDetail = () => {
                 height="200px"
                 className="mt-2"
               />
-              <p className="mt-1">{session.content}</p>
+              <div className="mt-1">
+                {parse(DOMPurify.sanitize(session.content))}
+              </div>
             </div>
           ))
         ) : (

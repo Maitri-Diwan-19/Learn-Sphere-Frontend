@@ -1,4 +1,3 @@
-
 import './App.css'
 import Register from './pages/Register'
 import { Route,Routes } from 'react-router-dom'
@@ -16,6 +15,7 @@ import CourseSessions from './pages/CourseSession'
 import StudentProfile from './pages/StudentProfile'
 import MyCourses from './pages/Instructorcourse'
 
+
 function App() {
   return (
     <>
@@ -23,7 +23,7 @@ function App() {
      <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
-      
+     
       <Route path='/student-dashboard' element={<StudentDashboard/>}>
       <Route index element={<MyEnrollCourses />} />
         <Route path='all-course' element={<AllCourses/>}/>

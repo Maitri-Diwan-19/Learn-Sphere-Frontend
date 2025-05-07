@@ -6,15 +6,10 @@ import { authcontext } from "../context/authContext";
 const Register = () => {
   const { registerUser } = useContext(authcontext);
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors },  } = useForm();
 
   const onSubmit = async (data) => {
     try {
-    
       await registerUser(data.email, data.password, data.role, data.name);
       navigate("/login");
     } catch (err) {
